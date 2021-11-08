@@ -1,4 +1,3 @@
-
 #[macro_use]
 extern crate rocket;
 
@@ -8,7 +7,6 @@ mod models;
 #[launch]
 fn rocket() -> _ {
     models::initialize_db();
-    let controllers = controllers::routers();
-
-    rocket::build().mount("/", controllers)
+    rocket::build()
+    .mount("/", controllers::book_controller::book_controller())
 }

@@ -24,25 +24,6 @@ pub struct Order {
 }
 
 impl Order {
-    pub fn new(
-        type_op: OrderType,
-        account_id: u32,
-        amount: f32,
-        order_id: u32,
-        pair: String,
-        limit_price: f32,
-        side: OrderSide,
-    ) -> Self {
-        Self {
-            type_op,
-            account_id,
-            amount,
-            order_id,
-            pair,
-            limit_price,
-            side,
-        }
-    }
 
     /// Get a reference to the order's side.
     pub fn side(&self) -> &OrderSide {
@@ -53,50 +34,6 @@ impl Order {
     pub fn limit_price(&self) -> f32 {
         self.limit_price
     }
-
-    // pub fn from_value(input: &Value) -> Result<Order, &str> {
-    //     let type_op = match OrderType::from_str(input["type_op"].as_str().unwrap()) {
-    //         Ok(e) => e,
-    //         Err(e) => return Err(e),
-    //     };
-    //     let account_id = match input["account_id"].as_i64() {
-    //         Some(id) => id as u32,
-    //         None => return Err("account_id not found."),
-    //     };
-    //     let amount = match input["amount"].as_f64() {
-    //         Some(id) => id as f32,
-    //         None => return Err("amount not found."),
-    //     };
-
-    //     let order_id = match input["order_id"].as_i64() {
-    //         Some(id) => id as u32,
-    //         None => return Err("order_id not found."),
-    //     };
-
-    //     let limit_price = match input["limit_price"].as_f64() {
-    //         Some(id) => id as f32,
-    //         None => return Err("limit_price not found."),
-    //     };
-
-    //     let side = match OrderSide::from_str(input["side"].as_str().unwrap()) {
-    //         Ok(e) => e,
-    //         Err(e) => return Err(e),
-    //     };
-
-    //     let mut pair = input["pair"].to_string();
-    //     pair.remove(0);
-    //     pair.remove(pair.len() - 1);
-
-    //     Ok(Order::new(
-    //         type_op,
-    //         account_id,
-    //         amount,
-    //         order_id,
-    //         pair,
-    //         limit_price,
-    //         side,
-    //     ))
-    // }
 
     /// Get a reference to the order's order id.
     pub fn order_id(&self) -> u32 {
